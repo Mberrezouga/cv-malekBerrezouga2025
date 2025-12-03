@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مالك بالرّزوقة - استشاري أمن سيبراني</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+            direction: rtl;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 15s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .title {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+            direction: ltr;
+            justify-content: flex-end;
+        }
+        
+        .icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            margin-left: 10px;
+            margin-right: 0;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 0;
+        }
+        
+        .sidebar {
+            background: #f8f9fa;
+            padding: 40px 30px;
+            border-left: 3px solid #e9ecef;
+        }
+        
+        .main {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .sidebar .section-title {
+            font-size: 1.2em;
+        }
+        
+        .skill-item {
+            margin-bottom: 20px;
+        }
+        
+        .skill-name {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2a5298;
+            font-size: 0.95em;
+        }
+        
+        .skill-bar {
+            background: #e9ecef;
+            height: 8px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            direction: ltr;
+        }
+        
+        .skill-level {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+        
+        .cert-item {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-right: 4px solid #667eea;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        
+        .cert-item:hover {
+            transform: translateX(-5px);
+        }
+        
+        .cert-name {
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 5px;
+        }
+        
+        .cert-date {
+            font-size: 0.85em;
+            color: #6c757d;
+        }
+        
+        .experience-item {
+            margin-bottom: 30px;
+            position: relative;
+            padding-right: 25px;
+        }
+        
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+        }
+        
+        .job-header {
+            margin-bottom: 10px;
+        }
+        
+        .job-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 5px;
+        }
+        
+        .company {
+            font-weight: 600;
+            color: #764ba2;
+            margin-bottom: 3px;
+        }
+        
+        .duration {
+            font-size: 0.9em;
+            color: #6c757d;
+            font-style: italic;
+        }
+        
+        .job-description {
+            margin-top: 12px;
+        }
+        
+        .job-description ul {
+            list-style: none;
+            padding-right: 0;
+        }
+        
+        .job-description li {
+            padding-right: 20px;
+            margin-bottom: 8px;
+            position: relative;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+        
+        .job-description li::before {
+            content: '◂';
+            position: absolute;
+            right: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .profile-text {
+            line-height: 1.8;
+            color: #495057;
+            font-size: 0.95em;
+        }
+        
+        .education-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        .degree {
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 5px;
+        }
+        
+        .school {
+            color: #495057;
+            font-size: 0.9em;
+            margin-bottom: 3px;
+        }
+        
+        .year {
+            color: #6c757d;
+            font-size: 0.85em;
+        }
+        
+        .languages {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .language {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            color: #1e3c72;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-right: 4px solid #667eea;
+        }
+        
+        .highlight-title {
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+        
+        .years-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>مالك بالرّزوقة</h1>
+                <div class="title">استشاري أمن سيبراني</div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        Berrezouga.malek@outlook.com
+                    </div>
+                    <div class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        438-455-5846
+                    </div>
+                    <div class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        مونتريال، كندا
+                    </div>
+                    <div class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+                        الإنجليزية، الفرنسية، العربية
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="main">
+                <div class="section">
+                    <div class="section-title">الملف المهني</div>
+                    <div class="highlight-box">
+                        <div class="highlight-title">استشاري أمن سيبراني متخصص</div>
+                        <p class="profile-text">
+                            استشاري أمن سيبراني مع 9 سنوات في بناء وتأمين التطبيقات المالية. بدأت كمطور، مما علمني كيف يفكر المهاجمون وأين تختبئ الثغرات. الآن أركز على حماية الأنظمة المصرفية من خلال DevSecOps وأمن السحابة وتقييم التهديدات. حصلت مؤخراً على شهادات Google Cybersecurity وCisco Ethical Hacking لصقل مهاراتي في الأمن الهجومي. في Desjardins، أمّنت خدمات صغيرة تعالج بيانات مالية حساسة مع إبقاء الفرق منتجة ورشيقة. أؤمن أن أفضل أمان لا يبطئ الفرق—بل يجعلهم واثقين.
+                        </p>
+                        <span class="years-badge">+9 سنوات خبرة</span>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">الخبرات المهنية</div>
+                    
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="job-title">تطوير مهني في الأمن السيبراني</div>
+                            <div class="company">تدريب مستقل وشهادات</div>
+                            <div class="duration">يناير 2025 - حتى الآن</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>حصلت على شهادتي Google Cybersecurity Professional وCisco Ethical Hacker—غوص عميق في تحليل التهديدات واختبار الاختراق والاستجابة للحوادث</li>
+                                <li>التركيز على هندسة أمن السحابة واستراتيجيات IAM لتطبيقات البنوك، ودراسة أنماط الهجوم الحقيقية وآليات الدفاع</li>
+                                <li>البحث في أطر الامتثال مثل ISO 27001 وPCI-DSS لفهم ما تحتاجه المؤسسات المالية فعلاً (وليس فقط مربعات للتحديد)</li>
+                                <li>البقاء على اطلاع بالتهديدات الناشئة وأدوات الأمان—لأن ما نجح العام الماضي لم يعد كافياً</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="job-title">محلل مبرمج أول</div>
+                            <div class="company">Desjardins</div>
+                            <div class="duration">يونيو 2020 - يناير 2025 (4.5 سنوات)</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>بنيت خدمات Java Spring الصغيرة الآمنة لتطبيقات البنوك—بتطبيق مبادئ OWASP ليس لأن قائمة تحقق قالت ذلك، بل لأن البيانات المالية تستحق حماية حقيقية</li>
+                                <li>أجريت عمليات تدقيق أمني مع SonarQube للكشف عن الثغرات قبل النشر (أنقذنا من بعض الحوادث المخيفة)</li>
+                                <li>صممت استراتيجيات أمان API—المصادقة والترخيص والتشفير—كامل المجموعة الدفاعية</li>
+                                <li>أتمتت اختبارات الأمان في خطوط CI/CD حتى تحصل الفرق على ردود فورية بدلاً من مفاجآت في الإنتاج</li>
+                                <li>عملت مع مهندسي الأمن على الاستجابة للحوادث والوقاية منها—تعلمت أن إصلاح الخطأ سهل، منع التالي صعب</li>
+                                <li>وثقت كل شيء في Jira، ليس للتظاهر بالامتثال بل حتى يتمكن أي شخص من فهم قراراتنا الأمنية</li>
+                                <li>نسقت مع مديري المنتجات والمصممين لتحقيق التوازن بين الأمان وسهولة الاستخدام—الأنظمة الآمنة التي يكرهها الناس لا تبقى آمنة</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="job-title">محلل نظم تقنية المعلومات</div>
+                            <div class="company">The Weather Network</div>
+                            <div class="duration">مارس 2017 - مايو 2020 (3 سنوات)</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>راقبت الأمان عبر منصات متعددة—العثور على نقاط الضعف قبل أن يفعل المهاجمون</li>
+                                <li>حافظت على أمن الخوادم واستجبت للحوادث للفرق الداخلية والعملاء الخارجيين</li>
+                                <li>حققت في مشاكل الأمان ووثقت ما كان خاطئاً (وكيفية منع تكراره)</li>
+                                <li>أنشأت مراقبة للكشف المبكر عن الأنشطة غير العادية—لأن اكتشاف الاختراقات في الساعة 2 صباحاً أفضل من شرحها في الساعة 9 صباحاً</li>
+                                <li>دعمت المكاتب الدولية في مونتريال وأوكفيل ومدريد في استكشاف أخطاء الأمان</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="job-title">محلل مبرمج</div>
+                            <div class="company">i2v</div>
+                            <div class="duration">أكتوبر 2016 - يناير 2017</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>بنيت منصات تجارة إلكترونية آمنة على Magento مع ميزات أمان مخصصة مصممة لاحتياجات العملاء</li>
+                                <li>دمجت أنظمة دفع آمنة وأدرت حسابات الحصص SAP MM</li>
+                                <li>أعددت وأمّنت خوادم محلية مع ضوابط وصول مناسبة—تعلمت أن الراحة بدون أمان هي مجرد مشكلة مستقبلية</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="job-title">مطور</div>
+                            <div class="company">Novo3bi</div>
+                            <div class="duration">نوفمبر 2015 - أغسطس 2016</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>بنيت تطبيقات ويب آمنة مع PHP وJavaScript وXML—تعلمت الأمان بالخطأ أولاً، ثم التصحيح</li>
+                                <li>طورت تطبيقات Java Spring مع Hibernate والأمان مدمج من البداية</li>
+                                <li>أنشأت سير عمل رشيق مع GitHub يتضمن فحوصات أمنية—انتهى "سنؤمنه لاحقاً"</li>
+                                <li>أدرت النظام بما في ذلك تقوية الخوادم وإدارة النطاقات</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="section">
+                    <div class="section-title">المهارات التقنية</div>
+                    <div class="skill-item">
+                        <div class="skill-name">أمن السحابة (Azure/AWS)</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">أمن CI/CD و DevSecOps</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">OWASP والبرمجة الآمنة</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">اختبار الاختراق والقرصنة الأخلاقية</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">كشف التهديدات و SIEM</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">IAM وإدارة الوصول</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">أمن API والمصادقة</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">أمن الشبكات وجدران الحماية</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">الامتثال (ISO 27001)</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">تقييم الثغرات</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">نظام Java Spring</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">بنية Microservices</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">برمجة Python / Bash</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">الشهادات</div>
+                    <div class="cert-item">
+                        <div class="cert-name">Google Cybersecurity Professional</div>
+                        <div class="cert-date">2025</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-name">Cisco Ethical Hacker</div>
+                        <div class="cert-date">2025</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-name">Swagger Hub API Owner</div>
+                        <div class="cert-date">مايو 2022</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-name">PSPO (Scrum)</div>
+                        <div class="cert-date">يناير 2021</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-name">Java Spring OWASP</div>
+                        <div class="cert-date">ديسمبر 2020</div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">التعليم</div>
+                    <div class="education-item">
+                        <div class="degree">شهادة في تطوير البرمجيات</div>
+                        <div class="school">UQAM، مونتريال</div>
+                        <div class="year">2015</div>
+                    </div>
+                    <div class="education-item">
+                        <div class="degree">إجازة في علوم الحاسوب</div>
+                        <div class="school">ISET الشرقية، تونس</div>
+                        <div class="year">2012</div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">اللغات</div>
+                    <div class="languages">
+                        <div class="language">الإنجليزية</div>
+                        <div class="language">الفرنسية</div>
+                        <div class="language">العربية</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
